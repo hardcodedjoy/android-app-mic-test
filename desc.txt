@@ -1,0 +1,1 @@
+This app displays the sound wave for the signal received from the device's microphone. It opens the MIC in RAW (UNPROCESSED) stereo mode (CHANNEL_IN_STEREO). In the app settings, the user can modify the Sample Rate (default = 48000 Hz) and select app theme (light / dark / system).
