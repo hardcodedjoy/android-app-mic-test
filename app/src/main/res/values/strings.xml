@@ -39,4 +39,5 @@ SOFTWARE.
     <string name="start">start</string>
     <string name="stop">stop</string>
     <string name="sample_rate">Sample Rate</string>
+    <string name="app_uses">App uses open-source libraries:</string>
 </resources>

@@ -32,6 +32,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.media.AudioFormat;
 import android.media.MediaRecorder;
 import android.os.Build;
 import android.os.Bundle;
@@ -221,15 +222,16 @@ public class MainActivity extends Activity {
 
     @SuppressLint("MissingPermission")
     private void onPermissionsGranted() {
-        int audioSource = MediaRecorder.AudioSource.MIC;
+        int audioSource = MediaRecorder.AudioSource.DEFAULT;
         if(android.os.Build.VERSION.SDK_INT >= 24) {
             audioSource = MediaRecorder.AudioSource.UNPROCESSED;
         }
 
-        micInput = new MicInput();
-        micInput.setAudioSource(audioSource);
-        micInput.setNumChannels(NUM_CHANNELS);
-        micInput.setSampleRate((int) settings.getSampleRate());
+        int sampleRate = (int) settings.getSampleRate();
+
+        int chFormat = AudioFormat.CHANNEL_IN_STEREO;
+
+        micInput = new MicInput(audioSource, chFormat, sampleRate);
 
         boolean micInitOK = micInput.init(this);
         if(!micInitOK) {

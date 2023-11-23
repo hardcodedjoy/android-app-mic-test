@@ -36,6 +36,7 @@ import android.text.method.LinkMovementMethod;
 import android.view.Window;
 import android.widget.TextView;
 
+import com.hardcodedjoy.audioinput.AudioInput;
 import com.hardcodedjoy.util.ThemeUtil;
 
 import java.text.DateFormat;
@@ -90,6 +91,11 @@ public class AboutActivity extends Activity {
         setAsLink(tv, s);
         findViewById(R.id.ll_github).setOnClickListener(
                 (view) -> findViewById(R.id.tv_github).performClick());
+
+        tv = findViewById(R.id.tv_app_uses_libs);
+        s = tv.getText().toString();
+        s += "\n" + AudioInput.about();
+        tv.setText(s);
     }
 
     @SuppressWarnings("SameParameterValue")
@@ -112,6 +118,5 @@ public class AboutActivity extends Activity {
         tv.setText(fromHTML(s));
         tv.setClickable(true);
         tv.setMovementMethod(LinkMovementMethod.getInstance());
-        //tv.setLinkTextColor(getResources().getColor(an));
     }
 }
